@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+
 import "./LoginPage.css";
+
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import userService from "../../utils/userService";
+
 import { useNavigate, Link } from "react-router-dom";
 import {
   Button,
@@ -12,6 +15,7 @@ import {
   Message,
   Segment,
 } from "semantic-ui-react";
+
 import PageHeader from '../../components/PageHeader/PageHeader'
 
 export default function LoginPage({handleSignUpOrLogin}) {
@@ -34,17 +38,10 @@ export default function LoginPage({handleSignUpOrLogin}) {
     e.preventDefault();
 
     try {
-      // Making the POST request to /api/users/login on our express server
       await userService.login(state);
-      // ^ this await ends after we recieve the token from the server, and store in localstorage
-
-      // Route to wherever you want!
-      // We call handleSignUpOrLogin, to decode that token from localstorage and store in our App component's state
       handleSignUpOrLogin();
       navigate("/");
     } catch (err) {
-      // Invalid user data (probably duplicate email)
-      // this is from the throw block in the userService.login first then function
       setError(err.message);
     }
   }
