@@ -14,7 +14,7 @@ import {
 } from "semantic-ui-react";
 import PageHeader from '../../components/PageHeader/PageHeader'
 
-export default function LoginPage(props) {
+export default function LoginPage({handleSignUpOrLogin}) {
   const [error, setError] = useState("");
   const [state, setState] = useState({
     email: "",
@@ -40,7 +40,7 @@ export default function LoginPage(props) {
 
       // Route to wherever you want!
       // We call handleSignUpOrLogin, to decode that token from localstorage and store in our App component's state
-      props.handleSignUpOrLogin();
+      handleSignUpOrLogin();
       navigate("/");
     } catch (err) {
       // Invalid user data (probably duplicate email)

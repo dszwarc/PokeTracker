@@ -4,7 +4,6 @@ import {
     Grid,
     Header,
     Image,
-    Message,
     Segment,
   } from "semantic-ui-react";
   
@@ -42,64 +41,19 @@ import {
       })
     }
   
-    function handleFileInput(e) {
-      // this takes the first file the user uploads
-      // and sets it in state
-      console.log(e.target.files)
-      setSelectedFile(e.target.files[0]);
-    }
-  
-    async function handleSubmit(e){
-      e.preventDefault();
-      // ===================================================================
-      // IN THIS CASE
-      // WE are sending over a photo/file
-      // We have to turn our data into formdata, otherwise it would be JSON
-      // YOu only have to do this if you're sending over a photo/file
-      const formData = new FormData(); // <- this is from the browser, allows us to create key value pairs
-      // photo is the key, the value is the stuff from our state
-      formData.append('photo', selectedFile);
-      // we could add the rest 1 by 1 or we can use a for in loop
-      // formData.append('username', state.username);
-      // formData.append('email', state.email);
-  
-      for (let fieldName in state){
-          formData.append(fieldName, state[fieldName])
-      }
-      // if you want to view the formData in the console you have to loop over it, otherwise it will look empty!
-      console.log(formData.forEach((item) => console.log(item)));
-      // ===================================================================
-  
-  
-      try {
-  
-          await userService.signup(formData); //this makes the http request to the our express server /api/users/signup
-          // when it finishes it stores the jwt toke in localstorage,
-          // we can switch the view (go to the feed page or something!)
-      handleSignUpOrLogin(); // this updates the state in the app with the correct token from localstorage!
-      navigate('/'); // this programmatically navigates the client to the home page (refere to app.js for the '/')
-  
-      } catch(err){
-          console.log(err.message, ' this is the error singnup up')
-          setError('Check your terminal, there was an error signing up!')
-      }
-  
-  
-    }
-  
     return (
       <>
       <PageHeader />
       <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" color="purple" textAlign="center">
-            <Image src="https://i.imgur.com/TM4eA5g.jpg" /> Sign Up
+            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" /> Sign Up
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
               <Form.Input
                 name="username"
-                placeholder="username"
+                placeholder="Trainer Name"
                 value={state.username}
                 onChange={handleChange}
                 required
@@ -132,17 +86,9 @@ import {
                 label="bio"
                 name="bio"
                 value={state.bio}
-                placeholder="Tell us more about your dogs..."
+                placeholder="What's your goal as a Pokemon Trainer?"
                 onChange={handleChange}
               />
-              <Form.Field>
-                <Form.Input
-                  type="file"
-                  name="photo"
-                  placeholder="upload image"
-                  onChange={handleFileInput}
-                />
-              </Form.Field>
               <Button type="submit" className="btn">
                 Signup
               </Button>
