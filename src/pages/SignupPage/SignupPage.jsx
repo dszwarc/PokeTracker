@@ -13,9 +13,9 @@ import {
   
   // this is a hook that allows us to programatically navigate to a different route
   import { useNavigate } from "react-router-dom";
-  import PageHeader from "../../components/Header/Header";
+  import PageHeader from "../../components/PageHeader/PageHeader";
   
-  export default function Signup({handleSignUpOrLogin}) {
+  export default function SignupPage({handleSignUpOrLogin}) {
   
     // navigate is a function that accepts a route to change too!
     const navigate = useNavigate()
@@ -28,9 +28,6 @@ import {
       bio: "",
     });
   
-    // profile image
-    const [selectedFile, setSelectedFile] = useState('')
-  
     const [error, setError] = useState("");
   
     function handleChange(e) {
@@ -41,12 +38,25 @@ import {
       })
     }
   
+    async function handleSubmit(e){
+        e.preventDefault();
+        //since we do not have a photo/file, we can just submit the state as signup
+        try{
+            await userService.signup(state);
+            handleSignUpOrLogin();
+            navigate('/');
+        } catch(err){
+            console.log(err, ' <-- this is the signup err')
+            setError('Check terminal, error signing up')
+        }
+    }
+
     return (
       <>
       <PageHeader />
       <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as="h2" color="purple" textAlign="center">
+            <Header as="h2" color="red" textAlign="center">
             <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" /> Sign Up
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -83,7 +93,7 @@ import {
                 required
               />
               <Form.TextArea
-                label="bio"
+                label="TRAINER GOAL"
                 name="bio"
                 value={state.bio}
                 placeholder="What's your goal as a Pokemon Trainer?"

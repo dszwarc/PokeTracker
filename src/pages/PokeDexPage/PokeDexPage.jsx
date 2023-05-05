@@ -4,12 +4,11 @@ import PokeDexIndex from '../../components/PokeDexIndex/PokeDexIndex';
 import PokeDexDetail from '../../components/PokeDexDetail/PokeDexDetail';
 import './PokeDexPage.css'
 
-export default function PokeDexPage(){
-    
-    
+export default function PokeDexPage({loggedUser}){
+
     return(
         <>
-        <PageHeader />
+        <PageHeader loggedUser={loggedUser}/>
         <div className='pokepage'>
             <PokeDexIndex />
             <PokeDexDetail />

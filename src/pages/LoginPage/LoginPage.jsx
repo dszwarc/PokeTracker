@@ -60,10 +60,11 @@ export default function LoginPage({handleSignUpOrLogin}) {
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="red" textAlign="center">
           <Image src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png' /> 
-          <h2>Log-in to begin!</h2>
+          
         </Header>
         <Form onSubmit={handleSubmit}>
           <Segment stacked>
+          <h2>Log-in to begin!</h2>
             <Form.Input
               type="email"
               name="email"
