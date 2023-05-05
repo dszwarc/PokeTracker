@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
 
 const pokemonSchema = new mongoose.Schema(
-    {
-        name: 'string',
-        nickname: 'string',
-        ability: 'string',
-        moves: ['string'],
-    }
+        {
+            name: 'string',
+            nickname: 'string',
+            ability: 'string',
+            moves: ['string'],
+            sprite: 'string',
+            isShiny: Boolean,
+            types: ['string']
+        }
     );
 
 const teamSchema = new mongoose.Schema(
