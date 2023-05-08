@@ -4,31 +4,59 @@ import PokeDexIndex from '../../components/PokeDexIndex/PokeDexIndex';
 import PokeDexDetail from '../../components/PokeDexDetail/PokeDexDetail';
 import './PokeDexPage.css'
 import  * as pokeApi from '../../utils/pokeApi'
+import {Grid} from 'semantic-ui-react'
+
 
 export default function PokeDexPage({loggedUser}){
-    const [pokemon, setPokemon] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [pokemon, setPokemon] = useState({})
+    const [pokeIndex, setPokeIndex] = useState({})
+    const [loading, setLoading] = useState({index: true, detail: true})
 
-    async function getPokemon(){
+    async function getPokemonDetail(){
         try{
-            const response = await pokeApi.getAll();
-            console.log(response, ' <--- data from pokeapi')
+            setLoading({...loading, detail: true});
+            const response = await pokeApi.getPoke(1,'','');
+            
+            console.log(response.data, ' <--- pokedetail data from pokeapi')
+            setPokemon(response.data)
         }catch(err){
-            consoe.log(err)
+            console.log(err)
         }
+        setLoading({...loading, detail: false});
+    }
+
+    async function getPokeIndex(){
+        try{
+            setLoading({...loading, index: true});
+            const response = await pokeApi.getPoke('',20,0);
+            console.log(response.data, ' <--- pokeindex data from pokeapi')
+            setPokeIndex(response.data)
+        }catch(err){
+            console.log(err)
+        }
+        setLoading({...loading, index: false});
     }
 
     useEffect(()=>{
-        const data = getPokemon()
+        getPokemonDetail()
+        getPokeIndex()
     },[])
+
+    if (!loading.index || !loading.detail){
+        return(
+            <>
+                <PageHeader loggedUser={loggedUser}/>  
+                <div id='pokepage'>
+                    <PokeDexIndex pokeIndex={pokeIndex}/>
+                    <PokeDexDetail pokemon={pokemon} />
+                </div>
+            </>
+        )
+    }
 
     return(
         <>
-        <PageHeader loggedUser={loggedUser}/>
-        <div className='pokepage'>
-            <PokeDexIndex />
-            <PokeDexDetail />
-        </div>
+            <h3>Loading...</h3>
         </>
     )
 }

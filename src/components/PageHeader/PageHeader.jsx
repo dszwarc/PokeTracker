@@ -21,6 +21,7 @@ export default function PageHeader({loggedUser}){
                 </div>  
             <div className='navlinks'>
                 <Link to='/'>POKEDEX</Link>
+                <Link to='/teams'>MY TEAMS</Link>
                 <Link to='/login' onClick={handleLogout}>LOGOUT</Link>
             </div>
         </div>

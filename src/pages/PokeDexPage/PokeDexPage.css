@@ -1,6 +1,5 @@
-.pokepage{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+#pokepage{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 400px auto;
 }
