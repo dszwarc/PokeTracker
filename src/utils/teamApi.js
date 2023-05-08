@@ -7,8 +7,9 @@ const BASE_URL = '/api/teams/'
 export async function create(data){
     return fetch(BASE_URL, {
         method: 'POST',
-        body: data,
-        header:{
+        body: JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json',
             Authorization: "Bearer " + tokenService.getToken()
         }
     }).then(response => {

@@ -4,20 +4,22 @@ import * as userService from '../../utils/userService';
 import AddTeamForm from '../../components/AddTeamForm/AddTeamForm';
 import * as teamApi from '../../utils/teamApi'
 import TeamDisplay from '../../components/TeamDisplay/TeamDisplay';
-import {Card} from 'semantic-ui-react'
-
+import {Card} from 'semantic-ui-react';
 
 export default function UserTeams({loggedUser}){
     const [teams, setTeams] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    function handleAddTeam(data){
-        teamApi.create(data);
+    async function handleAddTeam(team){
+        console.log(team, ' <--- this is whats being passed into teamapi create')
+        const responseData = await teamApi.create(team);
+        console.log(responseData, ' <--- responseData from handleAddTeam function')
     }
 
     async function getTeams(){
         try{
             const response = await teamApi.index();
+            setTeams(response.teams);
         } catch(err){
             console.log(err);
         }
@@ -28,16 +30,20 @@ export default function UserTeams({loggedUser}){
         getTeams()
     },[])
 
-
-
+if (!loading){
     return(
         <>
         <PageHeader loggedUser={loggedUser}/>
         <AddTeamForm handleAddTeam={handleAddTeam}/>
         <div>This is where my teams will be displayed</div>
-        <Card.Group>
-            <TeamDisplay teams={teams} />
-        </Card.Group>
+        <TeamDisplay teams={teams} />
+        
         </>
     )
+}
+return(
+    <div>Loading</div>
+)
+
+    
 }
