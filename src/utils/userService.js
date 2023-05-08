@@ -42,9 +42,14 @@ function login(creds) {
   .then(({token}) => tokenService.setToken(token));
 }
 
+function getTeams(){
+  axios.get(BASE_URL + 'teams')
+}
+
 export default {
   signup, 
   getUser,
   logout,
-  login
+  login,
+  getTeams
 };

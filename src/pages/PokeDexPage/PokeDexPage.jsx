@@ -42,7 +42,7 @@ export default function PokeDexPage({loggedUser}){
         getPokeIndex()
     },[])
 
-    if (!loading.index || !loading.detail){
+    if (!loading.detail || !loading.index){
         return(
             <>
                 <PageHeader loggedUser={loggedUser}/>  

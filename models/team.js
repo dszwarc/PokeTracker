@@ -16,6 +16,7 @@ const teamSchema = new mongoose.Schema(
     {
         name: 'string',
         description: 'string',
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
         pokemon: [pokemonSchema]
     }
 );
