@@ -16,8 +16,6 @@ export default function PokeDexPage({loggedUser}){
         try{
             setLoading({...loading, detail: true});
             const response = await pokeApi.getPoke(1,'','');
-            
-            console.log(response.data, ' <--- pokedetail data from pokeapi')
             setPokemon(response.data)
         }catch(err){
             console.log(err)
@@ -29,7 +27,6 @@ export default function PokeDexPage({loggedUser}){
         try{
             setLoading({...loading, index: true});
             const response = await pokeApi.getPoke('',20,0);
-            console.log(response.data, ' <--- pokeindex data from pokeapi')
             setPokeIndex(response.data)
         }catch(err){
             console.log(err)

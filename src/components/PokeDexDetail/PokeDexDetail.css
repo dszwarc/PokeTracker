@@ -1,3 +1,5 @@
 #pokeDetailDiv{
     grid-column: 2/3;
+    width: 50%;
+    align-content: center;
 }

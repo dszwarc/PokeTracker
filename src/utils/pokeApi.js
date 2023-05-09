@@ -10,8 +10,3 @@ export function getPoke(pokeId, limit, offset){
     pokeId ? (pokeId + '/') : pokeId
     return axios.get(`${BASE_URL}/pokemon/${pokeId}?limit=${limit}&offset=${offset}`)
 }
-
-export default{
-    getAll,
-    getPoke
-}

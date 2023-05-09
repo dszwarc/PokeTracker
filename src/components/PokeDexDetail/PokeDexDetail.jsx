@@ -1,5 +1,5 @@
 import React from "react";
-import {Card} from 'semantic-ui-react'
+import {Card, Form} from 'semantic-ui-react'
 
 
 export default function PokeDexDetail({pokemon}){
@@ -24,9 +24,18 @@ export default function PokeDexDetail({pokemon}){
         header={pokemon.name}
         meta={pokeId}
         >
-
         </Card>
         
+        <Form>
+            <Form.Field>
+                <label>Nickname</label>
+                <input value=''/>
+                <label>Pokemon</label>
+                <input value={pokemon.name.toUpperCase()} disabled name='name'/>
+
+            </Form.Field>
+        </Form>
+
         </div>
        
     )

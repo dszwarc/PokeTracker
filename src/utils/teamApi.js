@@ -19,6 +19,15 @@ export async function create(data){
     })
 }
 
+export function deleteTeam(teamId){
+    return fetch(`${BASE_URL}${teamId}`, {
+        method: 'DELETE',
+        headers:{
+            Authorization: "Bearer " + tokenService.getToken()
+        }
+    }).then(res => res.json())
+}
+
 export async function index(){
     return fetch(BASE_URL, {
         headers: {

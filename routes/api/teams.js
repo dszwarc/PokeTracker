@@ -4,5 +4,6 @@ const teamsCtrl = require('../../controllers/teams');
 
 router.get('/', teamsCtrl.index);
 router.post('/', teamsCtrl.create);
+router.delete('/:id', teamsCtrl.deleteTeam)
 
 module.exports = router;

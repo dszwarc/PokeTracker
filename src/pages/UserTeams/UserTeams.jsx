@@ -11,9 +11,8 @@ export default function UserTeams({loggedUser}){
     const [loading, setLoading] = useState(true);
 
     async function handleAddTeam(team){
-        console.log(team, ' <--- this is whats being passed into teamapi create')
-        const responseData = await teamApi.create(team);
-        console.log(responseData, ' <--- responseData from handleAddTeam function')
+        await teamApi.create(team);
+        getTeams();
     }
 
     async function getTeams(){
