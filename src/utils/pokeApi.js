@@ -2,11 +2,12 @@ import axios from "axios"
 
 const BASE_URL = 'https://pokeapi.co/api/v2'
 
-export function getAll(filter){
-    return axios.get(`${BASE_URL}/pokemon/${filter ? filter : ''}?limit=20`)
+export function getAll(low, high){
+    let limit = low > 1 ? (low-1): 0;
+    let filter = high;
+    return axios.get(`${BASE_URL}/pokemon/?limit=${filter ? filter : ''}&offset=${limit}`)
 }
 
-export function getPoke(pokeId, limit, offset){
-    pokeId ? (pokeId + '/') : pokeId
-    return axios.get(`${BASE_URL}/pokemon/${pokeId}?limit=${limit}&offset=${offset}`)
+export function getPoke(pokeId){
+    return axios.get(`${BASE_URL}/pokemon/${pokeId}`)
 }

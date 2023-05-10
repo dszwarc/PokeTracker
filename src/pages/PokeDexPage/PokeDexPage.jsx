@@ -5,46 +5,65 @@ import PokeDexDetail from '../../components/PokeDexDetail/PokeDexDetail';
 import './PokeDexPage.css'
 import  * as pokeApi from '../../utils/pokeApi'
 import {Grid} from 'semantic-ui-react'
+import { useParams } from 'react-router-dom';
 
 
 export default function PokeDexPage({loggedUser}){
-    const [pokemon, setPokemon] = useState({})
-    const [pokeIndex, setPokeIndex] = useState({})
-    const [loading, setLoading] = useState({index: true, detail: true})
+    const {id} = useParams();
+    console.log(id)
+    let searchId;
+    if (id){
+        searchId = id;
+    } else {
+        searchId = (Math.floor(1281 * Math.random()));
+    } 
+
+    const [pokeIdSearch, setPokeIdSearch] = useState(searchId);
+    const [pokemon, setPokemon] = useState({});
+    const [pokeIndex, setPokeIndex] = useState({});
+    const [loadingIndex, setLoadingIndex] = useState(true);
+    const [loadingDetail, setLoadingDetail] = useState(true);
+    const [search, setSearch] = useState({minP: 1, maxP: 20});
 
     async function getPokemonDetail(){
         try{
-            setLoading({...loading, detail: true});
-            const response = await pokeApi.getPoke(1,'','');
+            setLoadingDetail(true)
+            const response = await pokeApi.getPoke(searchId);
+            console.log(response.data)
             setPokemon(response.data)
         }catch(err){
             console.log(err)
         }
-        setLoading({...loading, detail: false});
+        setLoadingDetail(false);
     }
 
     async function getPokeIndex(){
         try{
-            setLoading({...loading, index: true});
-            const response = await pokeApi.getPoke('',20,0);
+            setLoadingIndex(true)
+            const response = await pokeApi.getAll(search.minP, search.maxP);
             setPokeIndex(response.data)
+            console.log(response.data, ' <-- pokeindex response')
         }catch(err){
             console.log(err)
         }
-        setLoading({...loading, index: false});
+        setLoadingIndex(false);
+    }
+
+    function handleMinMax(minP, maxP){
+        setSearch({minP: minP, maxP: maxP})
     }
 
     useEffect(()=>{
         getPokemonDetail()
         getPokeIndex()
-    },[])
+    },[search.maxP, search.minP, id])
 
-    if (!loading.detail || !loading.index){
+    if (!loadingDetail && !loadingIndex){
         return(
             <>
                 <PageHeader loggedUser={loggedUser}/>  
                 <div id='pokepage'>
-                    <PokeDexIndex pokeIndex={pokeIndex}/>
+                    <PokeDexIndex handleMinMax={handleMinMax} pokeIndex={pokeIndex}/>
                     <PokeDexDetail pokemon={pokemon} />
                 </div>
             </>
