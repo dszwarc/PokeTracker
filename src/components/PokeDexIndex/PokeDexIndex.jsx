@@ -17,7 +17,12 @@ export default function PokeDexIndex({pokeIndex, handleMinMax}){
 
     function handleSubmit(e){
         e.preventDefault()
-        handleMinMax(search.minP, search.maxP)
+        if (search.minP < search.maxP){
+            handleMinMax(search.minP, search.maxP)
+        } else {
+            handleMinMax(search.maxP, search.minP)
+        }
+        
     }
 
     const pokeDisplay = pokeIndex.results?.map((poke, idx) => {

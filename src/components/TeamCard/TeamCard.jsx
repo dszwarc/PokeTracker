@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Card, Button } from 'semantic-ui-react'
 import * as teamApi from '../../utils/teamApi'
+import {Link} from 'react-router-dom'
 
 export default function TeamCard({team, handleDelete}){
 
@@ -8,6 +9,8 @@ export default function TeamCard({team, handleDelete}){
         handleDelete(team._id)
     }
     
+    
+
         return(
             <Card>
                 <Card.Content>
@@ -15,7 +18,7 @@ export default function TeamCard({team, handleDelete}){
                     <Card.Description>{team.description}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <Button>Edit Team</Button>
+                    <Button><Link to={team._id}>Edit Team</Link></Button>
                     <Button onClick={handleSubmit}>Delete Team</Button>
                 </Card.Content>
             </Card>

@@ -27,7 +27,7 @@ export default function UserTeams({loggedUser}){
 
     useEffect(()=>{
         getTeams()
-    },[])
+    },[teams])
 
 if (!loading){
     return(

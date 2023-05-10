@@ -19,6 +19,10 @@ export async function create(data){
     })
 }
 
+export async function edit(teamId, data){
+    return fetch(BASE_URL)
+}
+
 export function deleteTeam(teamId){
     return fetch(`${BASE_URL}${teamId}`, {
         method: 'DELETE',

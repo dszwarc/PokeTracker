@@ -32,9 +32,18 @@ async function index(req, res){
     }
   }
 
+async function findOne(req, res){
+    try{
+        const teams = await Team.find({id: req.body.teamId});
+        res.status(200).json({teams: teams});
+    } catch(err){
+        return res.status(401).json(err);
+    }
+}
 
   module.exports = {
     index,
     create,
-    deleteTeam
+    deleteTeam,
+    findOne
 }

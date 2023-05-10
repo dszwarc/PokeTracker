@@ -30,7 +30,10 @@ export default function PageHeader({loggedUser}){
     
     return(
         <div className='navbar'>
-        <Image avatar src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png'/>
+         <div id='leftsidenav'>
+                    <Image avatar src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png'/>
+                    <h3>PokeTracker</h3>
+                </div>  
         <div className='navlinks'>
             <Link to='/'>POKEDEX</Link>
             <Link to='/signup'>SIGN UP</Link>

@@ -4,11 +4,8 @@ const pokemonSchema = new mongoose.Schema(
         {
             name: 'string',
             nickname: 'string',
-            ability: 'string',
-            moves: ['string'],
+            level: 'string',
             sprite: 'string',
-            isShiny: Boolean,
-            types: ['string']
         }
     );
 

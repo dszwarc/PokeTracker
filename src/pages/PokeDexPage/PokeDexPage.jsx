@@ -15,7 +15,7 @@ export default function PokeDexPage({loggedUser}){
     if (id){
         searchId = id;
     } else {
-        searchId = (Math.floor(1281 * Math.random()));
+        searchId = (Math.floor(1008 * Math.random()));
     } 
 
     const [pokeIdSearch, setPokeIdSearch] = useState(searchId);
