@@ -53,6 +53,10 @@ export default function PokeDexPage({loggedUser}){
         setSearch({minP: minP, maxP: maxP})
     }
 
+    async function handleAddPoke(poke){
+        await pokeApi.create(poke);
+    }
+
     useEffect(()=>{
         getPokemonDetail()
         getPokeIndex()
@@ -64,7 +68,7 @@ export default function PokeDexPage({loggedUser}){
                 <PageHeader loggedUser={loggedUser}/>  
                 <div id='pokepage'>
                     <PokeDexIndex handleMinMax={handleMinMax} pokeIndex={pokeIndex}/>
-                    <PokeDexDetail pokemon={pokemon} />
+                    <PokeDexDetail handleAddPoke={handleAddPoke} user={loggedUser} pokemon={pokemon} />
                 </div>
             </>
         )

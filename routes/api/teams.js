@@ -7,6 +7,6 @@ router.get('/', teamsCtrl.index);
 router.post('/', teamsCtrl.create);
 router.delete('/:id', teamsCtrl.deleteTeam)
 router.post('/:id/pokemon',pokeCtrl.create)
-router.delete('/:id/pokemon/:pokeId', pokeCtrl.delete)
+router.delete('/:id/pokemon/:pokeId', pokeCtrl.deletePoke)
 
 module.exports = router;

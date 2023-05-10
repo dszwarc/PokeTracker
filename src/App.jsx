@@ -29,7 +29,6 @@ function App() {
   }
   return (
     <Routes>
-      <Route path="/" element={<PokeDexPage loggedUser={user}/>} />
       <Route path="/*" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/login" element={<LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />
       <Route path="/signup" element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>} />

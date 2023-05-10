@@ -11,6 +11,7 @@ export default function UserTeams({loggedUser}){
     const [loading, setLoading] = useState(true);
 
     async function handleAddTeam(team){
+        console.log(team, '< --- this is team from handleAddTeam')
         await teamApi.create(team);
         getTeams();
     }
@@ -27,7 +28,7 @@ export default function UserTeams({loggedUser}){
 
     useEffect(()=>{
         getTeams()
-    },[teams])
+    },[loading])
 
 if (!loading){
     return(

@@ -35,7 +35,6 @@ export default function PageHeader({loggedUser}){
                     <h3>PokeTracker</h3>
                 </div>  
         <div className='navlinks'>
-            <Link to='/'>POKEDEX</Link>
             <Link to='/signup'>SIGN UP</Link>
             <Link to='/login'>LOGIN</Link>
         </div>

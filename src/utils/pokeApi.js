@@ -1,4 +1,5 @@
 import axios from "axios"
+import tokenService from '../utils/tokenService'
 
 const BASE_URL = 'https://pokeapi.co/api/v2'
 const TEAMS_URL = '/api/teams/'
