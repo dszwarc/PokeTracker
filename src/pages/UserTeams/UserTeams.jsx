@@ -5,6 +5,7 @@ import AddTeamForm from '../../components/AddTeamForm/AddTeamForm';
 import * as teamApi from '../../utils/teamApi'
 import TeamDisplay from '../../components/TeamDisplay/TeamDisplay';
 import {Card} from 'semantic-ui-react';
+import * as pokeApi from '../../utils/pokeApi'
 
 export default function UserTeams({loggedUser}){
     const [teams, setTeams] = useState([]);
@@ -14,6 +15,19 @@ export default function UserTeams({loggedUser}){
         console.log(team, '< --- this is team from handleAddTeam')
         await teamApi.create(team);
         getTeams();
+    }
+
+    async function handleDeletePokemon(team, poke){
+        setLoading(true)        
+        // console.log(poke, team, 'Poke then team')
+        // handleDeletePokemon(poke, team)
+        const data = {team: team, poke: poke}
+        try{
+            await pokeApi.deletePoke(data);
+        }catch(err){
+            console.log(err)
+        }
+        setLoading(false)
     }
 
     async function getTeams(){
@@ -36,7 +50,7 @@ if (!loading){
         <PageHeader loggedUser={loggedUser}/>
         <AddTeamForm handleAddTeam={handleAddTeam}/>
         <div>This is where my teams will be displayed</div>
-        <TeamDisplay teams={teams} />
+        <TeamDisplay teams={teams} handleDeletePokemon={handleDeletePokemon}/>
         
         </>
     )

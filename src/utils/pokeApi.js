@@ -28,3 +28,19 @@ export function create(data){
         throw new Error('Something went wrong with creating pokemon')
     })
 }
+
+export function deletePoke(data){
+    return fetch(TEAMS_URL + data.team._id + '/pokemon/' + data.poke._id, {
+        method: 'DELETE',
+        body: JSON.stringify(data),
+        headers:{
+            'Content-Type': 'application/json',
+            Authorization: "Bearer " + tokenService.getToken()
+        }
+    }).then(response => {
+        if (response.ok) return response.json()
+        console.log(data, ' <-- data from deletePoke api')
+        throw new Error('Something went wrong with deleting pokemon')
+        
+    })
+}

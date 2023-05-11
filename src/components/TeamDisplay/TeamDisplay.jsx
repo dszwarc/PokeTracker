@@ -3,7 +3,7 @@ import {Card} from 'semantic-ui-react'
 import * as teamApi from '../../utils/teamApi'
 import TeamCard from '../TeamCard/TeamCard';
 
-export default function TeamDisplay({teams}){
+export default function TeamDisplay({teams, handleDeletePokemon}){
 
     const [loading, setLoading] = useState(false);
 
@@ -22,7 +22,7 @@ export default function TeamDisplay({teams}){
             <div>
             {teams.map((team, idx)=>{
                 return(
-                    <TeamCard handleDelete={handleDelete} team={team} key={idx}/>
+                    <TeamCard handleDelete={handleDelete} team={team} key={idx} handleDeletePokemon={handleDeletePokemon}/>
                 )
             })}
             </div>

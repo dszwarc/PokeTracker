@@ -5,3 +5,7 @@
 .pokeIndexCards{
     width:400px;
 }
+
+.pokeIndexCards:hover{
+    transform: translate(50px, 0);
+}

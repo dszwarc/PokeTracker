@@ -12,15 +12,20 @@ async function create(req, res){
             sprite: req.body.sprite
         })
         await team.save();
-        res.status(201).json({data: `Added ${req.body.nickname} to ${team.name}`});
+        res.status(200).json({data: `Added ${req.body.nickname} to ${team.name}`});
     } catch(err){
         console.log(err)
     }
 }
 
 async function deletePoke(req,res){
+    console.log('hitting delete controller function')
+    console.log(req.params.pokeId)
     try{
-        Team.pokemon.findByIdAndRemove({id: req.params.pokeId})
+        const team = await Team.findById(req.params.id)
+        team.pokemon.remove(req.params.pokeId)
+        await team.save()
+        res.status(201).json({data: `Removed pokemon`});
     } catch(err){
         console.log(err)
     }
