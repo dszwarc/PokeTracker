@@ -9,13 +9,7 @@
 .navlinks>a{
     margin: 0;
     line-height: 0px !important;
-}
-
-.button{
-    background-color: rgb(255, 60, 60) !important;
-    color: white !important;
-    font-family: 'VT323', monospace !important;
-    font-size: 1.25rem !important;
+    color: white;
 }
 
 .navlinks{

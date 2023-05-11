@@ -1,3 +1,38 @@
 body{
   background-color: rgb(222, 222, 222);
 }
+
+h2{
+  font-family: 'VT323', monospace;
+  padding-top: 2rem;
+  margin-bottom: -2rem;
+}
+
+a{
+  color: black;
+}
+
+a:hover{
+  color: white;
+}
+
+label{
+  font-size: 2rem !important;
+  padding: .5rem;
+}
+
+.button{
+  background-color: rgb(255, 60, 60) !important;
+  color: white !important;
+  font-family: 'VT323', monospace !important;
+  font-size: 1.25rem !important;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+}
+.header{
+  font-family: 'VT323', monospace !important;
+  font-size: 3rem !important;
+}

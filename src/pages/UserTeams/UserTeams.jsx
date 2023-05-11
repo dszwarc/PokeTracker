@@ -6,6 +6,7 @@ import * as teamApi from '../../utils/teamApi'
 import TeamDisplay from '../../components/TeamDisplay/TeamDisplay';
 import {Card} from 'semantic-ui-react';
 import * as pokeApi from '../../utils/pokeApi'
+import './UserTeams.css'
 
 export default function UserTeams({loggedUser}){
     const [teams, setTeams] = useState([]);

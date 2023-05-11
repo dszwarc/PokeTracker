@@ -10,6 +10,7 @@
 }
 
 .pokeIndexCards{
+    border-radius: 3rem !important;
     height: 50px;
     width: 85% !important;
     margin: 5px !important;
@@ -33,19 +34,6 @@
     flex-direction: column;
 }
 
-label{
-    font-size: 2rem !important;
-    padding: .5rem;
-}
-
-a{
-    color: black;
-}
-
-a:hover{
-    color: white;
-}
-
 #indexcards{
     display: flex;
     align-content: center;
@@ -55,7 +43,7 @@ a:hover{
 
 #indexcards-container{
     padding: 20px 0 0 20px;
-    height: 80vh;
+    height: 79vh;
     margin-right: .5rem;
     overflow-y: auto;
 }
@@ -64,8 +52,6 @@ a:hover{
     font-size: 2rem;
 }
 
-h2{
-    font-family: 'VT323', monospace;
-    padding-top: 2rem;
-    margin-bottom: -2rem;
+.pokeIndexCards>a{
+    padding-left: 2rem;
 }

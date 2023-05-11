@@ -27,8 +27,15 @@ export default function TeamCard({team, handleDelete, handleDeletePokemon}){
                 <Button onClick={handleSubmit}>Delete Team</Button>
             </Card.Content>
             <Card.Content>
-                <table>
+                <table className='teamtable'>
+                    <thead>
+                            <th></th>
+                            <th>Nickname</th>
+                            <th>Level</th>
+                            <th>Remove</th>
+                    </thead>
                     <tbody>
+                        
                         {team.pokemon.map((poke, idx)=>{
                             return(
                                 <TeamCardRow key={idx} poke={poke} team={team} handleDeletePokemon={handleDeletePokemon} />

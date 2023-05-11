@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {Card, Form, Button} from 'semantic-ui-react'
+import {Card, Form, Button, Divider} from 'semantic-ui-react'
+import './PokeDexDetail.css'
 import * as teamApi from '../../utils/teamApi'
 import { useNavigate } from "react-router-dom";
 
@@ -85,6 +86,7 @@ export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAd
     if(user && (pokemon.name != 'NOT FOUND')){
         return(
             <div id="pokeDetailDiv">
+                <h1>Pok&#233;Finder</h1>
                 <Form onSubmit={handleSearchSubmit}>
                     <Form.Input 
                     placeholder='Search for a Pokemon here! (either Name or ID e.g. "7" or "squirtle")'
@@ -94,13 +96,15 @@ export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAd
                     />
                     <Button type='submit'>Search!</Button>
                 </Form>
+                <Divider horizontal/>
                 <Card
                     image={pokemon.sprites.front_default}
                     header={pokemon.name.toUpperCase()}
                     meta={pokeId}
                 >
                 </Card>
-
+                <Divider horizontal/>
+                <h1>Add this Pok&#233;mon to Your Team!</h1>
                 <Form onSubmit={handleSubmit}>
                     <Form.Input
                         placeholder='Your Pokemon Nickname here'
@@ -132,22 +136,32 @@ export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAd
                         onChange={handleSelect}
                         value={pokemonForm.teamId}
                     />
-                    <Button type='submit'>Add Pokemon</Button>
+                    <Button id='addpokebtn'type='submit'>Add Pok&#233;mon</Button>
                 </Form>
             </div>
         )
     } else {
         return(
             <div id="pokeDetailDiv">
+                <h1>Pok&#233;Finder</h1>
+                <Form onSubmit={handleSearchSubmit}>
+                    <Form.Input 
+                    placeholder='Search for a Pokemon here! (either Name or ID e.g. "7" or "squirtle")'
+                    value={search}
+                    onChange={handleSearchChange}
+                    name='search'
+                    />
+                    <Button type='submit'>Search!</Button>
+                </Form>
                 <Card
                     image={pokemon.sprites.front_default}
                     header={pokemon.name.toUpperCase()}
                     meta={pokeId}
                 >
                 </Card>
-                <div>
-                    <h4>Pokemon Not Found!</h4>
-                    <h6>Check your spelling or number and try again!</h6>
+                <div id='notfound'>
+                    <p>Pok&#233;mon Not Found!</p>
+                    <p>Check your spelling or number and try again!</p>
                 </div>
             </div>
              )
