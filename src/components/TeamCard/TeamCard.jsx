@@ -28,7 +28,7 @@ export default function TeamCard({team, handleDelete, handleDeletePokemon}){
             <Card.Content>
                 <table className='teamtable'>
                     <thead>
-                            <th>Sprite</th>
+                            <th></th>
                             <th>Nickname</th>
                             <th>Level</th>
                             <th>Remove</th>
