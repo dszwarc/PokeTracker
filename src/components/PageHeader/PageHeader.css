@@ -2,12 +2,28 @@
     display:flex;
     justify-content: space-between;
     padding: 15px;
-    background-color: rgb(255, 243, 243);
+    color: white;
+    background-color: rgb(255, 60, 60);
+}
+
+.navlinks>a{
+    margin: 0;
+    line-height: 0px !important;
+}
+
+.button{
+    background-color: rgb(255, 60, 60) !important;
+    color: white !important;
+    font-family: 'VT323', monospace !important;
+    font-size: 1.25rem !important;
 }
 
 .navlinks{
     display: flex;
-    gap: 10px;
+    gap: 2rem;
+    font-family: 'VT323', monospace;
+    font-size: 2rem; 
+    align-items: center;
 }
 
 #leftsidenav{
@@ -17,5 +33,7 @@
 }
 
 #leftsidenav>h3{
-    margin:0;
+    margin: 0;
+    font-family: 'VT323', monospace;
+    font-size: 2rem; 
 }
