@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom'
 import * as pokeApi from '../../utils/pokeApi'
 import TeamCardRow from '../TeamCardRow/TeamCardRow'
+import './TeamCard.css'
 
 export default function TeamCard({team, handleDelete, handleDeletePokemon}){
     const navigate = useNavigate();
@@ -18,18 +19,16 @@ export default function TeamCard({team, handleDelete, handleDeletePokemon}){
     }
 
     return(
-        <Card>
+        <Card raised className='teamcard'>
             <Card.Content>
                 <Card.Header>{team.name}</Card.Header>
                 <Card.Description>{team.description}</Card.Description>
             </Card.Content>
-            <Card.Content extra>
-                <Button onClick={handleSubmit}>Delete Team</Button>
-            </Card.Content>
+            
             <Card.Content>
                 <table className='teamtable'>
                     <thead>
-                            <th></th>
+                            <th>Sprite</th>
                             <th>Nickname</th>
                             <th>Level</th>
                             <th>Remove</th>
@@ -38,12 +37,14 @@ export default function TeamCard({team, handleDelete, handleDeletePokemon}){
                         
                         {team.pokemon.map((poke, idx)=>{
                             return(
-                                <TeamCardRow key={idx} poke={poke} team={team} handleDeletePokemon={handleDeletePokemon} />
-                                
+                                <TeamCardRow key={idx} poke={poke} team={team} handleDeletePokemon={handleDeletePokemon} />  
                             )
                         })}
                     </tbody>
                 </table>
+            </Card.Content>
+            <Card.Content extra>
+                <Button onClick={handleSubmit}>Delete Team</Button>
             </Card.Content>
         </Card>
         )

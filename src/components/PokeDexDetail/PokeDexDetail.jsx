@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Card, Form, Button, Divider} from 'semantic-ui-react'
+import {Card, Form, Button, Divider, Segment} from 'semantic-ui-react'
 import './PokeDexDetail.css'
 import * as teamApi from '../../utils/teamApi'
 import { useNavigate } from "react-router-dom";
@@ -86,6 +86,8 @@ export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAd
     if(user && (pokemon.name != 'NOT FOUND')){
         return(
             <div id="pokeDetailDiv">
+                
+                <Segment>
                 <h1>Pok&#233;Finder</h1>
                 <Form onSubmit={handleSearchSubmit}>
                     <Form.Input 
@@ -96,48 +98,52 @@ export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAd
                     />
                     <Button type='submit'>Search!</Button>
                 </Form>
-                <Divider horizontal/>
+                </Segment>
+               
                 <Card
+                    id='pokedetail'
                     image={pokemon.sprites.front_default}
                     header={pokemon.name.toUpperCase()}
                     meta={pokeId}
                 >
                 </Card>
-                <Divider horizontal/>
-                <h1>Add this Pok&#233;mon to Your Team!</h1>
-                <Form onSubmit={handleSubmit}>
-                    <Form.Input
-                        placeholder='Your Pokemon Nickname here'
-                        name='nickname'
-                        onChange={handleChange}
-                        value={pokemonForm.nickname}
-                        label='Nickname'
-                    />
-                     
-                    <Form.Input 
-                        placeholder='Current Pokemon Level'
-                        label='Level'
-                        name='level'
-                        onChange={handleChange}
-                        value={pokemonForm.level}
-                    />
-                    <Form.Input
-                        label='Pokemon'
-                        value={pokemon.name.toUpperCase()}
-                        readOnly={true}
-                        name='name'
-                    />
-                    <Form.Select
-                        placeholder="What team should they be added to?"
-                        label='Your Teams'
-                        name='teamId'
-                        fluid
-                        options={teamOptions}
-                        onChange={handleSelect}
-                        value={pokemonForm.teamId}
-                    />
-                    <Button id='addpokebtn'type='submit'>Add Pok&#233;mon</Button>
-                </Form>
+          
+                <Segment>
+                    <h1>Add this Pok&#233;mon to Your Team!</h1>
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Input
+                            placeholder='Your Pokemon Nickname here'
+                            name='nickname'
+                            onChange={handleChange}
+                            value={pokemonForm.nickname}
+                            label='Nickname'
+                        />
+                        
+                        <Form.Input 
+                            placeholder='Current Pokemon Level'
+                            label='Level'
+                            name='level'
+                            onChange={handleChange}
+                            value={pokemonForm.level}
+                        />
+                        <Form.Input
+                            label='Pokemon'
+                            value={pokemon.name.toUpperCase()}
+                            readOnly={true}
+                            name='name'
+                        />
+                        <Form.Select
+                            placeholder="What team should they be added to?"
+                            label='Your Teams'
+                            name='teamId'
+                            fluid
+                            options={teamOptions}
+                            onChange={handleSelect}
+                            value={pokemonForm.teamId}
+                        />
+                        <Button id='addpokebtn'type='submit'>Add Pok&#233;mon</Button>
+                    </Form>
+                </Segment>
             </div>
         )
     } else {

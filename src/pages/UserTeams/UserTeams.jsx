@@ -59,10 +59,12 @@ if (!loading){
     return(
         <>
         <PageHeader loggedUser={loggedUser}/>
-        <AddTeamForm handleAddTeam={handleAddTeam}/>
-        <div>This is where my teams will be displayed</div>
-        <TeamDisplay teams={teams} handleDelete={handleDelete} handleDeletePokemon={handleDeletePokemon}/>
-        
+        <div id='teampage'>
+            <AddTeamForm handleAddTeam={handleAddTeam}/>
+            <Card.Group>
+                <TeamDisplay teams={teams} handleDelete={handleDelete} handleDeletePokemon={handleDeletePokemon}/>
+            </Card.Group>
+        </div>
         </>
     )
 }

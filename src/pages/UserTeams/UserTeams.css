@@ -1,0 +1,12 @@
+#teampage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+#addteamform{
+    width:50vw !important;
+}

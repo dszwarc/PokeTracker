@@ -1,0 +1,30 @@
+.teamcard{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 60vw !important;
+}
+
+.teamtable{
+    margin: 0 auto;
+    font-size: 2rem;
+    font-family: 'VT323', monospace;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr{
+    border: 1px solid lightgray;
+}
+
+th{
+    padding: 2rem;
+}
+
+.teamsprite{
+    height: 10rem;
+}

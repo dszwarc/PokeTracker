@@ -36,3 +36,11 @@ label{
   font-family: 'VT323', monospace !important;
   font-size: 3rem !important;
 }
+
+.segment{
+  width: 40vw;
+}
+
+.segment>h1{
+  text-align: center;
+}

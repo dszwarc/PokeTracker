@@ -22,6 +22,7 @@ export default function AddTeamForm({handleAddTeam}){
 
     return (
 		<Segment>
+			<h1>Add Your Team</h1>
 			<Form onSubmit={handleSubmit}>
 				<Form.Input 
 					placeholder='Your Pokemon Team Name'
@@ -31,7 +32,7 @@ export default function AddTeamForm({handleAddTeam}){
 				/>
 				<Form.Input 
 					name='description'
-					placeholder="Describe your team!"
+					placeholder="Describe your team!  (e.g. battle, cuteness, contests...)"
 					onChange={handleChange}
 				/>
 				<Button type="submit">Create Team</Button>

@@ -14,7 +14,7 @@ export default function TeamCardRow({team, poke, handleDeletePokemon}){
     if(!loading){
     return(
         <tr>
-            <td><img src={poke.sprite} alt={poke.name} /></td>
+            <td><img className="teamsprite" src={poke.sprite} alt={poke.name} /></td>
             <td>{poke.nickname}</td>
             <td>lvl {poke.level}</td>
             <td><Link onClick={handleSubmit}> <Icon name="trash alternate"/></Link></td>
