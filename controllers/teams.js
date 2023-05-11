@@ -16,7 +16,8 @@ async function create(req, res){
 
 async function deleteTeam(req,res){
     try{
-        await Team.deleteOne({id: req.params.id})
+        console.log(req.params.id)
+        const team = await Team.findByIdAndDelete(req.params.id)
         res.status(200).json({data: 'delete successful'})
     }catch(err){
         res.status(400).json({error: err})

@@ -44,26 +44,32 @@ export default function PokeDexIndex({pokeIndex, handleMinMax}){
         
 
         return (
-            <Link key={idx} to={pokeLink}>
+            
                 <Card className="pokeIndexCards">
-                    <Card.Content>{pokeId} {pokeNameCap}</Card.Content>
+                    <Link key={idx} to={pokeLink}>
+                        <Card.Content className="pokeIndexContent">{pokeId}  {pokeNameCap}
+                        </Card.Content>
+                    </Link>
                 </Card>
-            </Link>
+            
         )
     })
 
     return(
-        <div>
-            <Form onSubmit={handleSubmit}>
-                <label>Low</label>
-                <input name='minP' onChange={handleChange} value={search.minP}/>
-                <label>High</label>
-                <input name='maxP' onChange={handleChange} value={search.maxP}/>
+        <div id='pokedexpage-left'>
+            <h2>Search the Database!</h2>
+            <Form id='indexsearch' onSubmit={handleSubmit}>
+                <Form.Group widths='equal'>
+                    <Form.Input label='ID From' name='minP' onChange={handleChange} value={search.minP}/>
+                    <Form.Input label='ID To' name='maxP' onChange={handleChange} value={search.maxP}/>
+                </Form.Group>
                 <Button type='submit'>Search!</Button>
             </Form>
-            <Card.Group>
+            
+            <Card.Group id='indexcards-container'>
                 {pokeDisplay}
             </Card.Group>
+        
         </div>
     )
 }

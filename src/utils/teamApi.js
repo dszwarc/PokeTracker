@@ -23,8 +23,8 @@ export async function edit(teamId, data){
     return fetch(BASE_URL)
 }
 
-export function deleteTeam(teamId){
-    return fetch(`${BASE_URL}${teamId}`, {
+export function deleteTeam(data){
+    return fetch(`${BASE_URL}${data.id}`, {
         method: 'DELETE',
         headers:{
             Authorization: "Bearer " + tokenService.getToken()

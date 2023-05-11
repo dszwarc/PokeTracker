@@ -3,7 +3,7 @@ import {Card, Form, Button} from 'semantic-ui-react'
 import * as teamApi from '../../utils/teamApi'
 import { useNavigate } from "react-router-dom";
 
-export default function PokeDexDetail({pokemon, user, handleAddPoke}){
+export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAddPoke}){
 
     const navigate = useNavigate();
     const [pokemonForm, setPokemonForm] = useState({
@@ -13,6 +13,7 @@ export default function PokeDexDetail({pokemon, user, handleAddPoke}){
         level: '',
         teamId: '',
     })
+    const [search, setSearch] = useState('')
 
     const [userTeams, setUserTeams] = useState([])
 
@@ -37,6 +38,15 @@ export default function PokeDexDetail({pokemon, user, handleAddPoke}){
         } catch(err){
             console.log(err)
         }
+    }
+
+    function handleSearchSubmit(e){
+        e.preventDefault()
+        getPokemonDetail(search)
+    }
+
+    function handleSearchChange(e){
+        setSearch(e.target.value)
     }
 
     useEffect(()=>{
@@ -72,9 +82,18 @@ export default function PokeDexDetail({pokemon, user, handleAddPoke}){
         navigate('/teams');
     }
 
-    if(user){
+    if(user && (pokemon.name != 'NOT FOUND')){
         return(
             <div id="pokeDetailDiv">
+                <Form onSubmit={handleSearchSubmit}>
+                    <Form.Input 
+                    placeholder='Search for a Pokemon here! (either Name or ID e.g. "7" or "squirtle")'
+                    value={search}
+                    onChange={handleSearchChange}
+                    name='search'
+                    />
+                    <Button type='submit'>Search!</Button>
+                </Form>
                 <Card
                     image={pokemon.sprites.front_default}
                     header={pokemon.name.toUpperCase()}
@@ -117,17 +136,24 @@ export default function PokeDexDetail({pokemon, user, handleAddPoke}){
                 </Form>
             </div>
         )
-    }
+    } else {
+        return(
+            <div id="pokeDetailDiv">
+                <Card
+                    image={pokemon.sprites.front_default}
+                    header={pokemon.name.toUpperCase()}
+                    meta={pokeId}
+                >
+                </Card>
+                <div>
+                    <h4>Pokemon Not Found!</h4>
+                    <h6>Check your spelling or number and try again!</h6>
+                </div>
+            </div>
+             )
+    } 
 
-    return(
-        <div id="pokeDetailDiv">
-            <Card
-                image={pokemon.sprites.front_default}
-                header={pokemon.name.toUpperCase()}
-                meta={pokeId}
-            >
-            </Card>
-        </div>
+    
        
-    )
+   
 }

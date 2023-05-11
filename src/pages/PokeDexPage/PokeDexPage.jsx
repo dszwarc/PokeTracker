@@ -25,14 +25,19 @@ export default function PokeDexPage({loggedUser}){
     const [loadingDetail, setLoadingDetail] = useState(true);
     const [search, setSearch] = useState({minP: 1, maxP: 20});
 
-    async function getPokemonDetail(){
+    async function getPokemonDetail(id){
         try{
             setLoadingDetail(true)
-            const response = await pokeApi.getPoke(searchId);
-            console.log(response.data)
-            setPokemon(response.data)
+            const response = await pokeApi.getPoke(id);
+            console.log(response, ' <--- response from detail search')
+            setPokemon(response.data)    
         }catch(err){
             console.log(err)
+            setPokemon({
+                name: 'NOT FOUND',
+                sprites: {front_default:'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png'},
+                id: '0'
+            })
         }
         setLoadingDetail(false);
     }
@@ -41,6 +46,7 @@ export default function PokeDexPage({loggedUser}){
         try{
             setLoadingIndex(true)
             const response = await pokeApi.getAll(search.minP, search.maxP);
+            console.log(response)
             setPokeIndex(response.data)
             console.log(response.data, ' <-- pokeindex response')
         }catch(err){
@@ -58,7 +64,7 @@ export default function PokeDexPage({loggedUser}){
     }
 
     useEffect(()=>{
-        getPokemonDetail()
+        getPokemonDetail(searchId)
         getPokeIndex()
     },[search.maxP, search.minP, id])
 
@@ -68,7 +74,7 @@ export default function PokeDexPage({loggedUser}){
                 <PageHeader loggedUser={loggedUser}/>  
                 <div id='pokepage'>
                     <PokeDexIndex handleMinMax={handleMinMax} pokeIndex={pokeIndex}/>
-                    <PokeDexDetail handleAddPoke={handleAddPoke} user={loggedUser} pokemon={pokemon} />
+                    <PokeDexDetail getPokemonDetail={getPokemonDetail} handleAddPoke={handleAddPoke} user={loggedUser} pokemon={pokemon} />
                 </div>
             </>
         )

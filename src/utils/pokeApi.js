@@ -6,7 +6,7 @@ const TEAMS_URL = '/api/teams/'
 
 export function getAll(low, high){
     let limit = low > 1 ? (low-1): 0;
-    let filter = high;
+    let filter = high - limit;
     return axios.get(`${BASE_URL}/pokemon/?limit=${filter ? filter : ''}&offset=${limit}`)
 }
 

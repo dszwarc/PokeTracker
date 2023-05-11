@@ -14,9 +14,9 @@ export default function TeamCard({team, handleDelete, handleDeletePokemon}){
     })
 
     async function handleSubmit(){
-        handleDelete(team._id)
+        handleDelete({id: team._id})
     }
-    
+
     return(
         <Card>
             <Card.Content>

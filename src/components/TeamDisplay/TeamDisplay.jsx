@@ -3,19 +3,11 @@ import {Card} from 'semantic-ui-react'
 import * as teamApi from '../../utils/teamApi'
 import TeamCard from '../TeamCard/TeamCard';
 
-export default function TeamDisplay({teams, handleDeletePokemon}){
+export default function TeamDisplay({teams, handleDelete, handleDeletePokemon}){
 
     const [loading, setLoading] = useState(false);
 
-    async function handleDelete(id){
-        setLoading(true)
-        try{
-            await teamApi.deleteTeam(id)
-        } catch(err){
-            console.log(err)
-        }
-        setLoading(false)
-    }
+   
 
     if (!loading){
         return(

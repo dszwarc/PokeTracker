@@ -30,6 +30,16 @@ export default function UserTeams({loggedUser}){
         setLoading(false)
     }
 
+    async function handleDelete(id){
+        setLoading(true)
+        try{
+            await teamApi.deleteTeam(id)
+        } catch(err){
+            console.log(err)
+        }
+        setLoading(false)
+    }
+
     async function getTeams(){
         try{
             const response = await teamApi.index();
@@ -50,7 +60,7 @@ if (!loading){
         <PageHeader loggedUser={loggedUser}/>
         <AddTeamForm handleAddTeam={handleAddTeam}/>
         <div>This is where my teams will be displayed</div>
-        <TeamDisplay teams={teams} handleDeletePokemon={handleDeletePokemon}/>
+        <TeamDisplay teams={teams} handleDelete={handleDelete} handleDeletePokemon={handleDeletePokemon}/>
         
         </>
     )
