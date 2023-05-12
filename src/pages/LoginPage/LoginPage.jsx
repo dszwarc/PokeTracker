@@ -60,7 +60,7 @@ export default function LoginPage({handleSignUpOrLogin}) {
           
         </Header>
         <Form onSubmit={handleSubmit}>
-          
+          <Segment stacked>
           <h3>Log-in to begin!</h3>
             <Form.Input
               type="email"
@@ -87,7 +87,7 @@ export default function LoginPage({handleSignUpOrLogin}) {
             >
               Login
             </Button>
-        
+          </Segment>
         </Form>
         <Message>
           New to us? <Link to="/signup">Sign Up</Link>

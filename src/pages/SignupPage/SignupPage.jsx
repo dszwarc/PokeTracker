@@ -57,8 +57,9 @@ import {
       <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
         <Grid.Column id='forminfo' style={{ maxWidth: 450 }}>
             <Header as="h2" color="red" textAlign="center">
-            <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" /> Sign Up
-          </Header>
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" />
+            </Header>
+            <h2>Sign Up</h2>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
               <Form.Input
