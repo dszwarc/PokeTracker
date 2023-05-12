@@ -33,7 +33,7 @@ label{
   justify-content: center;
 }
 
-.myforms{
+.myform{
   display: flex !important;
   justify-content: center !important;
   flex-direction: column !important;
