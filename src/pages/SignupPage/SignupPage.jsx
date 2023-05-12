@@ -10,7 +10,7 @@ import {
   import { useState } from "react";
   import userService from "../../utils/userService";
   import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
-  
+  import './SignupPage.css'
   // this is a hook that allows us to programatically navigate to a different route
   import { useNavigate } from "react-router-dom";
   import PageHeader from "../../components/PageHeader/PageHeader";
@@ -55,7 +55,7 @@ import {
       <>
       <PageHeader />
       <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column id='forminfo' style={{ maxWidth: 450 }}>
             <Header as="h2" color="red" textAlign="center">
             <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" /> Sign Up
           </Header>
