@@ -9,12 +9,11 @@ require("./config/database");
 // Require controllers here
 
 const app = express();
-
+app.set('view engine', 'ejs');
 // add in when the app is ready to be deployed
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger("dev"));
 app.use(express.json());
-
 
 // Configure the auth middleware
 // This decodes the jwt token, and assigns
@@ -23,16 +22,14 @@ app.use(require("./config/auth"));
 // api routes must be before the "catch all" route
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/teams", require('./routes/api/teams'));
+const manifest = require('./dist/manifest.json');
+console.log(manifest)
+app.use(express.static(path.join(__dirname, "dist")));
+
 // "catch all" route
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.render(path.join(__dirname, 'dist', 'index.ejs'), {manifest});
 });
-
-
-const port = process.env.PORT || 3001;
-
-
-
 
 const { PORT = 8000 } = process.env;
 app.listen(PORT, () => {
