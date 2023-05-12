@@ -59,7 +59,7 @@ import {
             <Header as="h2" color="red" textAlign="center">
               <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png" />
             </Header>
-            <h2>Sign Up</h2>
+            <h3>Sign Up</h3>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked>
               <Form.Input
