@@ -31,6 +31,7 @@ label{
 .form{
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .header{
   font-family: 'VT323', monospace !important;
