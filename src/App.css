@@ -34,7 +34,9 @@ label{
 }
 
 .myforms{
-  flex-direction: column;
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important;
 }
 
 .header{
