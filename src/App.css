@@ -32,6 +32,11 @@ label{
   display: flex;
   justify-content: center;
 }
+
+.myforms{
+  flex-direction: column;
+}
+
 .header{
   font-family: 'VT323', monospace !important;
   font-size: 3rem !important;

@@ -23,7 +23,7 @@ export default function AddTeamForm({handleAddTeam}){
     return (
 		<Segment>
 			<h1>Add Your Team</h1>
-			<Form onSubmit={handleSubmit}>
+			<Form className='myform' onSubmit={handleSubmit}>
 				<Form.Input 
 					placeholder='Your Pokemon Team Name'
 					required

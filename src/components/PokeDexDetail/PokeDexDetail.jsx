@@ -89,7 +89,7 @@ export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAd
                 
                 <Segment>
                 <h1>Pok&#233;Finder</h1>
-                <Form onSubmit={handleSearchSubmit}>
+                <Form className="myform" onSubmit={handleSearchSubmit}>
                     <Form.Input 
                     placeholder='Search for a Pokemon here! (either Name or ID e.g. "7" or "squirtle")'
                     value={search}
@@ -110,7 +110,7 @@ export default function PokeDexDetail({pokemon, user, getPokemonDetail, handleAd
           
                 <Segment>
                     <h1>Add this Pok&#233;mon to Your Team!</h1>
-                    <Form onSubmit={handleSubmit}>
+                    <Form className='myform'onSubmit={handleSubmit}>
                         <Form.Input
                             placeholder='Your Pokemon Nickname here'
                             name='nickname'
