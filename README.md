@@ -21,7 +21,7 @@ PokeTracker was created using a MERN boilerplate. In addition to the MERN stack,
   * AXIOS
 
 
-### Getting Started
+#### Getting Started
 
 ##### How To Use
 
@@ -32,7 +32,7 @@ PokeTracker was created using a MERN boilerplate. In addition to the MERN stack,
 
 3. Start creating teams and adding Pokemon from the PokeDex!
 
-##### Future Planning
+## Future Planning
 
 As I develop this app further, I have several features I plan to implement. Mainly, I want the site to be more functional for actual team planning which means more statistics need to be displayed that I am pulling from the PokeAPI.
 
