@@ -1,32 +1,19 @@
 
-# Mern Boilerplate
+# PokeTracker
 
-This is a mern Boilerplate using vite to compile the frontend.  
+Poketracker is an app created to keep track of all your different Pokemon teams!
 
-##### Things to note
+##### How To Use
 
-1. The server code is using `import`, currently you have to add the file extension in the server code. 
+PokeTracker
 
-2.  Note the `index.html` for the code needed to be added for hot reloading and etc... 
+1. Sign up for a free account. Add your Pokemon goal if you have one so other trainers 
 
-3. Code is setup to use `JWT` auth
+2. Start creating teams and adding Pokemon from the PokeDex!
 
-4. Take a look at the server.js code, there is some es6 things to setup `__dirname`
+## App Overview 
 
+PokeTracker was created using a MERN boilerplate. In addition to the MERN stack, PokeTracker uses API fetch and AXIOS in order to fetch data from the pokeapi, populating the details for all the existing Pokemon.
 
-#### Setup 
+#### Technologies Used
 
-1. ```npm install```
-2. ```npm run dev```
-3. setup `.env` file 
-
-- .env file 
-
-```
-SECRET=seiRocks!
-```
-
-##### Starting the App
-
-- One terminal
-command - ```npm run dev```
